@@ -45,17 +45,6 @@ identificador = -1
 # Indicar que irá a la página de inicio
 @app.route('/')
 def index():
-    global persona
-    global personas
-
-    person = persona('Hector',
-            'Guerrero',
-            'Masculino', 
-            'hector_jesus_89@hotmail.com', 
-            'Contra1', 
-            'Medico')
-
-    personas.append(person)
 
     return render_template('home.html') # Cuando le dará la dirección, mostrará este texto
 

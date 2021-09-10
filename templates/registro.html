@@ -12,37 +12,37 @@
             oninput='repetirContrasena.setCustomValidity(repetirContrasena.value != contrasena.value ? "Passwords do not match." : "")'>
                 <div class="mb-3">
                     <label>Nombre</label> <br>
-                    <input type="text" name="nombre" id="nombre" class="form-control">
+                    <input type="text" name="nombre" id="nombre" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Apellido</label> <br>
-                    <input type="text" name="apellidos" id="apellidos" class="form-control">
+                    <input type="text" name="apellidos" id="apellidos" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Genero</label> <br>
-                    <input type="text" name="genero" id="genero" class="form-control">
+                    <input type="text" name="genero" id="genero" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="rol">Rol</label>
-                    <select class="form-control" id="rol" name="rol">
+                    <select class="form-control form-select" id="rol" name="rol" required>
+                    <option selected>Seleciona tu rol</option>
                     <option>Médico</option>
                     <option>Administrador</option>
                     </select>
                 </div> 
                 <div class="mb-3">
                     <label>Correo Electronico</label> <br>
-                    <input type="email" name="correoElectronico" id="correoElectronico" class="form-control">
+                    <input type="email" name="correoElectronico" id="correoElectronico" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Contraseña</label> <br>
-                    <input type="password" name="contrasena" id="contrasena" class="form-control">
+                    <input type="password" name="contrasena" id="contrasena" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label>Repetir contraseña</label> <br>
-                    <input type="password" name="repetirContrasena" id="repetirContrasena" class="form-control">
+                    <input type="password" name="repetirContrasena" id="repetirContrasena" class="form-control" required>
                 </div>
                 <div class="mb-3 d-grid gap-2">
-                    <input type="submit" class="btn btn-info" value="Enviar datos" class="form-control">
+                    <input type="submit" class="btn btn-info" value="Enviar datos" class="form-control" required>
                 </div>
             </form>
         </div>
