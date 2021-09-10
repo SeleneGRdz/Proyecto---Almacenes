@@ -7,30 +7,65 @@ app = Flask(__name__)
 # Objeto
 
 
+class persona:
+    def __init__(self, nombre, apellidos, genero, correoElectronico, contrasena, rol):
+
+        self._nombre = nombre
+        self._apellidos = apellidos
+        self._genero = genero
+        self._correoElectronico = correoElectronico
+        self._contrasena = contrasena
+        self._rol = rol
+
+    def get_nombre(self):
+        return self._nombre
+
+    def get_apellidos(self):
+        return self._apellidos
+
+    def get_genero(self):
+        return self._genero
+
+    def get_correoElectronico(self):
+        return self._correoElectronico
+
+    def get_contrasena(self):
+        return self._contrasena
+
+    def get_rol(self):
+        return self._rol
+
 
 personas = []
 
+
+identificador = -1
 
 
 # Indicar que irá a la página de inicio
 @app.route('/')
 def index():
+    global persona
+    global personas
+
+    person = persona('Hector',
+            'Guerrero',
+            'Masculino', 
+            'hector_jesus_89@hotmail.com', 
+            'Contra1', 
+            'Medico')
+
+    personas.append(person)
+
     return render_template('home.html') # Cuando le dará la dirección, mostrará este texto
+
+    
 
 # Visualizar el formulario
 @app.route('/registro/')
 def registro():
     return render_template('registro.html')
     
-class persona:
-    def __init__(self, nombre, apellidos, genero, correoElectronico, contrasena, rol):
-
-        self.nombre = nombre
-        self.apellidos = apellidos
-        self.genero = genero
-        self.correoElectronico = correoElectronico
-        self.contrasena = contrasena
-        self.rol = rol
         
 
 @app.route('/reg-procesa', methods=['POST'])
@@ -39,14 +74,15 @@ def procesa():
     global persona
 
     # ID de registro junto al campo que referencia 
-    persona(request.form['nombre'],
+    person = persona(request.form['nombre'],
             request.form['apellidos'],
             request.form['genero'], 
             request.form['correoElectronico'], 
             request.form['contrasena'], 
             request.form['rol'])
 
-    personas.append(persona)
+
+    personas.append(person)
 
     
     #return count + " " + nombre + " " + apellidos + " " +correoElectronico+ " "+ genero+ " " +rol +" la información ha sido registrada"
@@ -55,26 +91,36 @@ def procesa():
 
 @app.route('/inicio/')
 def inicio():
-    return render_template('inicio.html')
+    global personas
+
+    per = personas[identificador]
+
+    return render_template('inicio.html', nombreP=per.get_nombre(), apellidoP=per.get_apellidos(), correoP=per.get_correoElectronico(), generoP=per.get_genero(), rolP=per.get_rol() )
 
 @app.route('/ing-procesa', methods=['POST'])
 def ingProcesa():
     global personas
+    global identificador
 
-    print(personas[0].nombre)
-    return 'hola'
+    bandera = False
+
+    # hola = personas[0].get_nombre()
+
     # Correo y contraseña coincidan
-    # for i in count:
-    #     if(request.form['correoElectronico'] == personas[i].correoElectronico and request.form['contrasena'] == contrasena[i]):
-    #         return 'hola paso!'
-    #         # identificador = i
-    #         # bandera = True
-    #         # break
-    # return 'hola noo'
-    # if bandera == False :
-    #     return redirect(url_for('index'))
-    # elif bandera == True :
-    #     return redirect(url_for('inicio'))
+    i = 0
+
+    for persona in personas:
+        if(request.form['correoElectronico'] == persona.get_correoElectronico() and request.form['contrasena'] == persona.get_contrasena()):
+            bandera = True
+            identificador = i
+            break
+        i = i + 1
+    
+
+    if bandera == False :
+        return redirect(url_for('index'))
+    elif bandera == True :
+        return redirect(url_for('inicio'))
 
     #return count + " " + nombre + " " + apellidos + " " +correoElectronico+ " "+ genero+ " " +rol +" la información ha sido registrada"
 
