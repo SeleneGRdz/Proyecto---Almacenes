@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Página de registro</title>
+        <meta charset ="utf-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <form method="POST" action="/reg-procesa">
+                <div class="mb-3">
+                    <label>Nombre</label> <br>
+                    <input type="text" name="nombre" id="nombre"> 
+                </div>
+                <div class="mb-3">
+                    <label>Apellido</label> <br>
+                    <input type="text" name="apellidos" id="apellido"> 
+                </div>
+                <div class="mb-3">
+                    <label>Genero</label> <br>
+                    <input type="text" name="genero" id="genero"> 
+                </div>
+                <div class="mb-3">
+                    <label>Correo Electronico</label> <br>
+                    <input type="text" name="correoElectronico" id="correoElectronico"> 
+                </div>
+                <div class="mb-3">
+                    <label>Contraseña</label> <br>
+                    <input type="password" name="contrasena" id="contrasena"> 
+                </div>
+                <div class="mb-3">
+                    <label>Repetir contraseña</label> <br>
+                    <input type="password" name="repetirContrasena" id="repetirContrasena"> 
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-info" value="Enviar datos">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

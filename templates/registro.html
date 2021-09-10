@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Página de registro</title>
+        <meta charset ="utf-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        
+        <div class="container">
+            <form method="POST" action="/reg-procesa" class="col-4 offset-md-4"
+            oninput='repetirContrasena.setCustomValidity(repetirContrasena.value != contrasena.value ? "Passwords do not match." : "")'>
+                <div class="mb-3">
+                    <label>Nombre</label> <br>
+                    <input type="text" name="nombre" id="nombre" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>Apellido</label> <br>
+                    <input type="text" name="apellidos" id="apellidos" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>Genero</label> <br>
+                    <input type="text" name="genero" id="genero" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="rol">Rol</label>
+                    <select class="form-control" id="rol" name="rol">
+                    <option>Médico</option>
+                    <option>Administrador</option>
+                    </select>
+                </div> 
+                <div class="mb-3">
+                    <label>Correo Electronico</label> <br>
+                    <input type="email" name="correoElectronico" id="correoElectronico" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>Contraseña</label> <br>
+                    <input type="password" name="contrasena" id="contrasena" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>Repetir contraseña</label> <br>
+                    <input type="password" name="repetirContrasena" id="repetirContrasena" class="form-control">
+                </div>
+                <div class="mb-3 d-grid gap-2">
+                    <input type="submit" class="btn btn-info" value="Enviar datos" class="form-control">
+                </div>
+            </form>
+        </div>
+        
+
+    </body>
+</html>
