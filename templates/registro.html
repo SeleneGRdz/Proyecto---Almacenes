@@ -10,17 +10,17 @@
         <div class="container">
             <form method="POST" action="/reg-procesa" class="col-4 offset-md-4"
             oninput='repetirContrasena.setCustomValidity(repetirContrasena.value != contrasena.value ? "Passwords do not match." : "")'>
-                <div class="mb-3">
-                    <label>Nombre</label> <br>
-                    <input type="text" name="nombre" id="nombre" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="nombre" required>
+                    <label for="nombre">Nombre</label>
                 </div>
-                <div class="mb-3">
-                    <label>Apellido</label> <br>
-                    <input type="text" name="apellidos" id="apellidos" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="apellidos" required>
+                    <label for="apellidos">Apellidos</label>
                 </div>
-                <div class="mb-3">
-                    <label>Genero</label> <br>
-                    <input type="text" name="genero" id="genero" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="text" name="genero" id="genero" class="form-control" placeholder="genero" required>
+                    <label for="genero">Género</label>
                 </div>
                 <div class="mb-3">
                     <select class="form-control form-select" id="rol" name="rol" required>
@@ -29,22 +29,23 @@
                     <option>Administrador</option>
                     </select>
                 </div> 
-                <div class="mb-3">
-                    <label>Correo Electronico</label> <br>
-                    <input type="email" name="correoElectronico" id="correoElectronico" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="email" name="correoElectronico" id="correoElectronico" class="form-control" placeholder="correoElectronico" required>
+                    <label for="correoElectronico">Correo electrónico</label>
                 </div>
-                <div class="mb-3">
-                    <label>Contraseña</label> <br>
-                    <input type="password" name="contrasena" id="contrasena" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="contrasena" required>
+                    <label for="contrasena">Contraseña</label>
                 </div>
-                <div class="mb-3">
-                    <label>Repetir contraseña</label> <br>
-                    <input type="password" name="repetirContrasena" id="repetirContrasena" class="form-control" required>
+                <div class="form-floating mb-3">
+                    <input type="password" name="repetirContrasena" id="repetirContrasena" class="form-control" placeholder="repetirContrasena" required>
+                    <label for="repetirContrasena">Repetir contraseña</label>
                 </div>
                 <div class="mb-3 d-grid gap-2">
                     <input type="submit" class="btn btn-info" value="Enviar datos" class="form-control" required>
                 </div>
             </form>
+            
         </div>
         
 
