@@ -23,12 +23,16 @@
                     <label for="genero">Género</label>
                 </div>
                 <div class="mb-3">
-                    <select class="form-control form-select" id="rol" name="rol" required>
+                    <select onchange="campoCedula()"  class="form-control form-select" id="rol" name="rol" required>
                     <option selected>Seleciona tu rol</option>
-                    <option>Médico</option>
-                    <option>Administrador</option>
+                    <option value="medico" >Médico</option>
+                    <option value="administrador">Administrador</option>
                     </select>
                 </div> 
+                <div class="form-floating mb-3">
+                    <input type="text" name="cedula" id="cedula" class="form-control" placeholder="cedula"  hidden>
+                    <label for="cedula">Cedula</label>
+                </div>
                 <div class="form-floating mb-3">
                     <input type="email" name="correoElectronico" id="correoElectronico" class="form-control" placeholder="correoElectronico" required>
                     <label for="correoElectronico">Correo electrónico</label>
@@ -47,7 +51,21 @@
             </form>
             
         </div>
-        
+        <script>
+            function campoCedula(){
+                if(document.getElementById('rol').value=="medico"){
+                    
+                    document.getElementById('cedula').removeAttribute('hidden');
+                    document.getElementById('cedula').setAttribute("required","")
+
+                }
+                else{
+                    document.getElementById('cedula').removeAttribute('required');
+                    document.getElementById('cedula').setAttribute("hidden","")
+                }
+                
+            }
+        </script>
 
     </body>
 </html>
