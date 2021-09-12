@@ -37,8 +37,6 @@ class persona:
 
 
 personas = []
-
-
 identificador = -1
 
 
