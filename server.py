@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 class persona:
-    def __init__(self, nombre, apellidos, genero, correoElectronico, contrasena, rol):
+    def __init__(self, nombre, apellidos, genero, correoElectronico, contrasena, rol, cedula):
 
         self._nombre = nombre
         self._apellidos = apellidos
@@ -16,6 +16,7 @@ class persona:
         self._correoElectronico = correoElectronico
         self._contrasena = contrasena
         self._rol = rol
+        self._cedula = cedula
 
     def get_nombre(self):
         return self._nombre
@@ -34,6 +35,9 @@ class persona:
 
     def get_rol(self):
         return self._rol
+    
+    def get_cedula(self):
+        return self._cedula
 
 
 personas = []
@@ -66,7 +70,8 @@ def procesa():
             request.form['genero'], 
             request.form['correoElectronico'], 
             request.form['contrasena'], 
-            request.form['rol'])
+            request.form['rol'],
+            request.form['cedula'],)
 
 
     personas.append(person)
@@ -82,7 +87,8 @@ def inicio():
 
     per = personas[identificador]
 
-    return render_template('inicio.html', nombreP=per.get_nombre(), apellidoP=per.get_apellidos(), correoP=per.get_correoElectronico(), generoP=per.get_genero(), rolP=per.get_rol() )
+    return render_template('inicio.html', nombreP=per.get_nombre(), apellidoP=per.get_apellidos(), correoP=per.get_correoElectronico(), generoP=per.get_genero(), 
+                           rolP=per.get_rol(), cedulaP = per.get_cedula() )
 
 @app.route('/ing-procesa', methods=['POST'])
 def ingProcesa():
