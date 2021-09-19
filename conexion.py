@@ -39,6 +39,7 @@ def esValido(conexion, correo, password):
 def retornarUsuario(conexion, correo, password):
     cursor = conexion.cursor()
     sql = "SELECT * FROM empleados WHERE email = %s and contrasenia = sha1(%s)"
+    #en parametros creo que es contrasena en vez de password
     parametros = (correo, password)
     cursor.execute(sql, parametros)
     for elemento in cursor:
