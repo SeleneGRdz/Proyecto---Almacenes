@@ -15,6 +15,9 @@
           <h5 class="card-title">Página de inicio</h5>
           <p class="card-text">¡Bienvenid@ {{ nombreP }}!</p>
           <p>{{ rolP }}</p>
+          {% if cedulaP %}
+          <p>{{ cedulaP }}</p>
+          {% endif %}
         </div>
         <div class="card-footer bg-transparent border-success">Comience aquí</div>
       </div>

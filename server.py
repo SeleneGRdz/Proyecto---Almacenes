@@ -72,7 +72,7 @@ def procesa():
             request.form['correoElectronico'], 
             request.form['contrasena'], 
             request.form['rol'],
-            request.form['cedula'],)
+            request.form['cedula'])
 
 
     personas.append(person)
