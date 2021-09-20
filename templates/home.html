@@ -11,17 +11,29 @@
 <body>
     <div  class="col-4 offset-md-4 container">
         <form method="POST" action="/ing-procesa">
+<<<<<<< HEAD
             <div class="mb-3">
                 <label>Correo electrónico</label> <br>
                 <input type="text" name="correo" id="correo" class="form-control"> 
+=======
+            <div class="form-floating mb-3">
+                <input type="text" name="correoElectronico" id="correoElectronico" class="form-control" placeholder="correoElectronico" required>
+                <label for="correoElectronico">Correo Electronico</label> 
+>>>>>>> 1483038546527953c9cc7ee01fb1f6ac3080f568
             </div>
-            <div class="mb-3">
-                <label>Contraseña</label> <br>
-                <input type="text" name="contrasena" id="contrasena" class="form-control"> 
+            <div class="form-floating mb-3">
+                <input type="text" name="contrasena" id="contrasena" class="form-control" placeholder="contrasena" required> 
+                <label for="contrasena">Contraseña</label> 
             </div>
             <div class="mb-3 d-grid gap-2">
-                <input type="submit" class="btn btn-success" value="Iniciar Sesión">
+                <input type="submit" class="btn btn-outline-success" value="Iniciar Sesión">
             </div>
+<<<<<<< HEAD
+=======
+            <div class="mb-3 d-grid gap-2">
+                <a href="/registro/" class="btn btn-outline-primary"> Registrate </a> 
+            </div>
+>>>>>>> 1483038546527953c9cc7ee01fb1f6ac3080f568
         </form>
         <div class="mb-3 d-grid gap-2">
             <a href="/registro/" class="btn btn-primary"> Registrate </a> 

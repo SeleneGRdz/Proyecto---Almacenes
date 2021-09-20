@@ -9,12 +9,25 @@
     <title>Home</title>
 </head>
 <body>
+<<<<<<< HEAD
     <div class="container">
       <div class="header col-md-8">
           <p>Bienvenido {{ data[1] }}</p>
           <p>{{ data[6] }}</p>
 
+=======
+    <div class="container card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-transparent border-success col-md-8">Sistema de registro</div>
+        <div class="card-body text-success">
+          <h5 class="card-title">Página de inicio</h5>
+          <p class="card-text">¡Bienvenid@ {{ nombreP }}!</p>
+          <p>{{ rolP }}</p>
+          {% if cedulaP %}
+          <p>{{ cedulaP }}</p>
+          {% endif %}
+        </div>
+        <div class="card-footer bg-transparent border-success">Comience aquí</div>
+>>>>>>> 1483038546527953c9cc7ee01fb1f6ac3080f568
       </div>
-    </div>
 </body>
 </html>
