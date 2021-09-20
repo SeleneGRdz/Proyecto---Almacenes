@@ -1,46 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask.globals import request 
+from conexion import guardarDatos, conectar, esValido
 
 # python .\server.py
 
 app = Flask(__name__)
 # Objeto
-
-
-class persona:
-    def __init__(self, nombre, apellidos, genero, correoElectronico, contrasena, rol):
-
-        self._nombre = nombre
-        self._apellidos = apellidos
-        self._genero = genero
-        self._correoElectronico = correoElectronico
-        self._contrasena = contrasena
-        self._rol = rol
-
-    def get_nombre(self):
-        return self._nombre
-
-    def get_apellidos(self):
-        return self._apellidos
-
-    def get_genero(self):
-        return self._genero
-
-    def get_correoElectronico(self):
-        return self._correoElectronico
-
-    def get_contrasena(self):
-        return self._contrasena
-
-    def get_rol(self):
-        return self._rol
-
-
-personas = []
-
-
-identificador = -1
-
 
 # Indicar que irá a la página de inicio
 @app.route('/')
@@ -59,19 +24,25 @@ def registro():
 
 @app.route('/reg-procesa', methods=['POST'])
 def procesa():
-    global personas
-    global persona
 
     # ID de registro junto al campo que referencia 
-    person = persona(request.form['nombre'],
-            request.form['apellidos'],
-            request.form['genero'], 
-            request.form['correoElectronico'], 
-            request.form['contrasena'], 
-            request.form['rol'])
+    nombre = request.form['nombre']
+    apellidos=request.form['apellidos']
+    genero=request.form['genero']
+    rol=request.form['rol']
+    cedula= request.form['cedula']
+    correo=request.form['correoElectronico']
+    contrasenia=request.form['contrasena']
+    conn = conectar()
+
+    if conn != None: #None significa que no se pudo instanciar correctamente
+       # return nombre + " " + apellidos + " "+genero+ " "+rol+ " "+ cedula+ " "+correo+ " "+contrasenia
+        guardarDatos(conn, nombre, apellidos,genero, correo, contrasenia,rol, cedula)
+    else:
+        return "<p>Error de conexion a la base de datos</p>"
 
 
-    personas.append(person)
+    
 
     
     #return count + " " + nombre + " " + apellidos + " " +correoElectronico+ " "+ genero+ " " +rol +" la información ha sido registrada"
@@ -79,37 +50,23 @@ def procesa():
 
 
 @app.route('/inicio/')
-def inicio():
-    global personas
+def inicio(datos):
 
-    per = personas[identificador]
 
-    return render_template('inicio.html', nombreP=per.get_nombre(), apellidoP=per.get_apellidos(), correoP=per.get_correoElectronico(), generoP=per.get_genero(), rolP=per.get_rol() )
+    return render_template('inicio.html', data=datos)
 
 @app.route('/ing-procesa', methods=['POST'])
 def ingProcesa():
-    global personas
-    global identificador
+    conn = conectar()
+    if conn != None:
+        correo =  request.form['correo']
+        contra = request.form['contrasena']
+        elemento =esValido(conn, correo, contra)
+        if elemento != False:
+            return render_template('inicio.html', data=elemento)
+        else:
+            return redirect(url_for('index'))
 
-    bandera = False
-
-    # hola = personas[0].get_nombre()
-
-    # Correo y contraseña coincidan
-    i = 0
-
-    for persona in personas:
-        if(request.form['correoElectronico'] == persona.get_correoElectronico() and request.form['contrasena'] == persona.get_contrasena()):
-            bandera = True
-            identificador = i
-            break
-        i = i + 1
-    
-
-    if bandera == False :
-        return redirect(url_for('index'))
-    elif bandera == True :
-        return redirect(url_for('inicio'))
 
     #return count + " " + nombre + " " + apellidos + " " +correoElectronico+ " "+ genero+ " " +rol +" la información ha sido registrada"
 
